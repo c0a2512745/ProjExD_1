@@ -22,18 +22,21 @@ def main():
             if event.type == pg.QUIT: return
 
         tate = 0 #演習2
-        yoko = -1
+        yoko = 0
         
         key_lst = pg.key.get_pressed() #練習10-3：押下キーの取得
         if key_lst[pg.K_UP]: #練習10-4
-            tate = -1
+            tate -= 1
         if key_lst[pg.K_DOWN]:
-            tate = +1
+            tate += 1
         if key_lst[pg.K_RIGHT]:
-            tate = 0
-            yoko += 2
+            yoko += 1
         if key_lst[pg.K_LEFT]:
-            tate = 0
+            yoko += -1
+            
+        if yoko == 0:
+            yoko += -1
+        if key_lst[pg.K_LEFT]:
             yoko += -1
 
         kk_rct.move_ip((yoko,tate))
