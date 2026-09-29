@@ -13,15 +13,17 @@ def main():
     kk_img = pg.image.load("fig/3.png") #練習3：こうかとんsurfaceの作成
     kk_img = pg.transform.flip(kk_img, True, False) #練習3：こうかとん左右反転
     tmr = 0
+
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0])
+        x = -tmr
+        screen.blit(bg_img, [x, 0]) #練習5：背景画像を右から左
         screen.blit(kk_img, [300,200]) #練習4：こうかとんsurfaceを張り付ける
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        clock.tick(200) #練習6：FPSを200
 
 
 if __name__ == "__main__":
