@@ -31,7 +31,7 @@ def main():
             tate = +1
         if key_lst[pg.K_RIGHT]:
             tate = 0
-            yoko = +2
+            yoko += 2
         if key_lst[pg.K_LEFT]:
             tate = 0
             yoko += -1
