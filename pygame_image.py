@@ -21,15 +21,22 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        tate = 0 #演習2
+        yoko = -1
+        
         key_lst = pg.key.get_pressed() #練習10-3：押下キーの取得
         if key_lst[pg.K_UP]: #練習10-4
-            kk_rct.move_ip((0,-1))
+            tate = -1
         if key_lst[pg.K_DOWN]:
-                    kk_rct.move_ip((0,+1))
+            tate = +1
         if key_lst[pg.K_RIGHT]:
-                    kk_rct.move_ip((+2,0))
+            tate = 0
+            yoko = +2
         if key_lst[pg.K_LEFT]:
-                    kk_rct.move_ip((-1,0))
+            tate = 0
+            yoko += -1
+
+        kk_rct.move_ip((yoko,tate))
 
 
         x = tmr%3200
@@ -37,7 +44,7 @@ def main():
         screen.blit(bg_img2, [-x+1600, 0]) #練習7：2枚目の背景画像を右から左
         screen.blit(bg_img, [-x+3200, 0]) #練習9：3枚目の背景画像を右から左
         screen.blit(kk_img, kk_rct) #練習4：こうかとんsurfaceを張り付ける。練習10-5：こうかとんrectの貼り付け
-        kk_rct.move_ip(-1,0)
+        # kk_rct.move_ip(-1,0) #演習1-1
         pg.display.update()
         tmr += 1        
         clock.tick(200) #練習6：FPSを200
